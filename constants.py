@@ -58,3 +58,10 @@ ASSET_PERMISSIONS = {  # by asset identifier
         {'asset_id': '4', 'role_code': 'admin'},
     ]
 }
+
+ACTOR: dict[str, str] = {
+        "identifier": "actor_id",
+        "name": "actor_name",
+        "type": "actor_type",
+        "email": "actor_mail",
+    }
