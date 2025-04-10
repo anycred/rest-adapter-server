@@ -7,6 +7,10 @@ from utils.permissions import retrieve_asset_permissions, retrieve_all_permissio
 
 router = APIRouter()
 
+"""it is not necessary to implement all the routes.
+there are optional routes, depending on the mode you choose.
+You can read more in the Entitle documentation.
+https://docs.beyondtrust.com/entitle/docs/entitle-integration-rest"""
 
 @router.get('/get_assets')
 async def get_assets():
