@@ -1,14 +1,14 @@
 from fastapi import APIRouter
 
-from constants import ASSETS, ACTORS, ACTOR
+from constants import ASSETS, ACTORS, NEW_ACTOR
 from logger import logger
 from models import AccessRequestBody, CreateActorRequestBody, DeleteActorRequestBody
 from utils.permissions import retrieve_asset_permissions, retrieve_all_permissions
 
 router = APIRouter()
 
-"""it is not necessary to implement all the routes.
-there are optional routes, depending on the mode you choose.
+"""It's not necessary to implement all the routes.
+Some routes are optional, depending on the mode you choose when setting up the integration.
 You can read more in the Entitle documentation.
 https://docs.beyondtrust.com/entitle/docs/entitle-integration-rest"""
 
@@ -64,7 +64,7 @@ async def create_actor(data: CreateActorRequestBody) -> dict:
     return {
             'next': None,
             'data': {
-                'actor': ACTOR,
+                'actor': NEW_ACTOR,
                 'login_info': {
                     'username': 'test'
                 }

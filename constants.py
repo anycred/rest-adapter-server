@@ -59,7 +59,7 @@ ASSET_PERMISSIONS = {  # by asset identifier
     ]
 }
 
-ACTOR: dict[str, str] = {
+NEW_ACTOR: dict[str, str] = {
         "identifier": "actor_id",
         "name": "actor_name",
         "type": "actor_type",
