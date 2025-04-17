@@ -12,6 +12,7 @@ Some routes are optional, depending on the mode you choose when setting up the i
 You can read more in the Entitle documentation.
 https://docs.beyondtrust.com/entitle/docs/entitle-integration-rest"""
 
+
 @router.get('/get_assets')
 async def get_assets():
     logger.debug('get_assets called')
@@ -49,33 +50,33 @@ async def revoke_access(data: AccessRequestBody):
     # Revoke access here...
     return {'data': {}}
 
+
 @router.post('/check_config')
-async def check_config()-> dict:
+async def check_config() -> dict:
     return {
-            'data': {
-                'valid': True
-            }
+        'data': {
+            'valid': True
         }
+    }
+
 
 @router.post('/create_actor')
 async def create_actor(data: CreateActorRequestBody) -> dict:
     logger.debug(f'create_actor called with {data}')
     # Create actor here...
     return {
-            'next': None,
-            'data': {
-                'actor': NEW_ACTOR,
-                'login_info': {
-                    'username': 'test'
-                }
+        'next': None,
+        'data': {
+            'actor': NEW_ACTOR,
+            'login_info': {
+                'username': 'test'
             }
         }
+    }
+
 
 @router.post('/delete_actor')
 async def delete_actor(data: DeleteActorRequestBody) -> dict:
     logger.debug(f'delete_actor called with {data}')
     # Delete actor here...
     return {}
-
-
-
