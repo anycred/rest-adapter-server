@@ -1,11 +1,16 @@
 from fastapi import APIRouter
 
-from constants import ASSETS, ACTORS
+from constants import ASSETS, ACTORS, NEW_ACTOR
 from logger import logger
-from models import AccessRequestBody
+from models import AccessRequestBody, CreateActorRequestBody, DeleteActorRequestBody
 from utils.permissions import retrieve_asset_permissions, retrieve_all_permissions
 
 router = APIRouter()
+
+"""It's not necessary to implement all the routes.
+Some routes are optional, depending on the mode you choose when setting up the integration.
+You can read more in the Entitle documentation.
+https://docs.beyondtrust.com/entitle/docs/entitle-integration-rest"""
 
 
 @router.get('/get_assets')
@@ -44,3 +49,34 @@ async def revoke_access(data: AccessRequestBody):
     logger.debug(f'revoke_access called with {data}')
     # Revoke access here...
     return {'data': {}}
+
+
+@router.post('/check_config')
+async def check_config() -> dict:
+    return {
+        'data': {
+            'valid': True
+        }
+    }
+
+
+@router.post('/create_actor')
+async def create_actor(data: CreateActorRequestBody) -> dict:
+    logger.debug(f'create_actor called with {data}')
+    # Create actor here...
+    return {
+        'next': None,
+        'data': {
+            'actor': NEW_ACTOR,
+            'login_info': {
+                'username': 'test'
+            }
+        }
+    }
+
+
+@router.post('/delete_actor')
+async def delete_actor(data: DeleteActorRequestBody) -> dict:
+    logger.debug(f'delete_actor called with {data}')
+    # Delete actor here...
+    return {}
